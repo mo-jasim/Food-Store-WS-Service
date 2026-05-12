@@ -11,14 +11,14 @@ jobs:
         name: Build and Push Docker Image
         runs-on: ubuntu-latest
         env:
-            IMAGE_NAME: codersgyan/mernspace-c-ws-service
+            IMAGE_NAME: mojasim/mernspace-c-ws-service
             IMAGE_TAG: build-${{ github.run_number }}
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v3
+              uses: actions/checkout@v4
             - name: Log in to Docker Hub
-              uses: docker/login-action@v1
+              uses: docker/login-action@v3
               with:
                   username: ${{ secrets.DOCKERHUB_USERNAME }}
                   password: ${{ secrets.DOCKERHUB_PASSWORD }}
